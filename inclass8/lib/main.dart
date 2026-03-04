@@ -14,7 +14,7 @@ class FoldersScreen extends StatefulWidget {
   _FoldersScreenState createState() => _FoldersScreenState();
 }
 
-class _FoldersScreenState extends State {
+class _FoldersScreenState extends State<FoldersScreen> {
   final FolderRepository _folderRepository = FolderRepository();
   final CardRepository _cardRepository = CardRepository();
   List _folders = [];
@@ -163,5 +163,18 @@ class _FoldersScreenState extends State {
       default:
         return Colors.grey;
     }
+  }
+}
+
+class CardsScreen extends StatelessWidget {
+  final Folder folder;
+  const CardsScreen({Key? key, required this.folder}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(folder.folderName)),
+      body: Center(child: Text('Cards for ${folder.folderName}')),
+    );
   }
 }
